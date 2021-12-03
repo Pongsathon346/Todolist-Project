@@ -14,7 +14,7 @@ module.exports = () => {
         const sql = "SELECT * FROM users WHERE username = $1 LIMIT 1"
         db.query(sql, [username], (err, result) => {
             if(err) throw err
-    
+            
             if(result.rowCount === 0){
                 done(null, false);
             }else {

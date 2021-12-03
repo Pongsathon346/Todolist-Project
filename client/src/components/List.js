@@ -1,7 +1,9 @@
 import { useState } from "react"
 
 const List = () => {
+    
     const [lists,setLists] = useState([])
+
     return(
         <>
             <div className="flex flex-col">

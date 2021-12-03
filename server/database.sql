@@ -6,6 +6,14 @@ CREATE TABLE todo_lists(
     todo_start DATE ,
     todo_end DATE ,
     todo_status varchar(50),
+    project_id INT references projects(project_id)
+);
+
+CREATE TABLE projects(
+    project_id SERIAL PRIMARY KEY,
+    project_name varchar(255) NOT NULL,
+    project_description varchar(255) NOT NULL,
+    project_createdat DATE NOT NULL,
     user_id INT references users(id)
 );
 
