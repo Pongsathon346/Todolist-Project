@@ -1,4 +1,12 @@
+
 const Navbar = () => {
+    let user = JSON.parse(localStorage.getItem('user'))
+    if(user){
+
+    }else{
+        
+    }
+    
     return(
             <nav class="bg-gray-800">
                 <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -26,11 +34,14 @@ const Navbar = () => {
                     </div>
                     <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                         <div class="hidden sm:block sm:ml-6">
+                        {!user ? (
                         <div class="flex space-x-4">
+                        
                             <a href="/login" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Login</a>
 
                             <a href="/register" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</a>
                         </div>
+                        ):(<div></div>)}
                         </div>
                     </div>
                     </div>
