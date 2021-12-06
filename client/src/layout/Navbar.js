@@ -27,9 +27,8 @@ const Navbar = () => {
                             <h4 class="font-extrabold text-white">TO-DO</h4>
                         </div>
                         <div class="hidden sm:block sm:ml-6">
-                        <div class="flex space-x-4">
-                            <a href="/projects" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-                        </div>
+                            <div class="flex space-x-4">
+                            </div>
                         </div>
                     </div>
                     <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
