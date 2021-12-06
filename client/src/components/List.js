@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { addListData, deleteListData, showListData } from "../redux/actions"
 
@@ -6,24 +6,25 @@ const List = () => {
     
     const dispatch = useDispatch()
 
-    const [lists,setLists] = useState([])
     const [input,setInput] = useState('')
 
     const local = localStorage.getItem('user')
     const user_id = local.id
 
-    dispatch(showListData(user_id))
+    const lists = useSelector((state) => state.todolist)
 
-    setLists(useSelector((state) => state.todolist))
+    useEffect(() => {
+        dispatch(showListData(user_id))
+    },[])
 
     const addList = () => {
         dispatch(addListData(input,'Plan',user_id))
-        setLists(useSelector((state) => state.todolist))
+        dispatch(showListData(user_id))
     }
 
     const onDelete = (id) => {
         dispatch(deleteListData(id))
-        setLists(useSelector((state) => state.todolist))
+        dispatch(showListData(user_id))
     }
 
     return(
