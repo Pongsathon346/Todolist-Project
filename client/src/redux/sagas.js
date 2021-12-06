@@ -27,7 +27,6 @@ import { login, register } from './apis/user'
 
 function* showList(action){
     try{
-        console.log(action);
         const data = yield call(showTodolist())
         yield put(showListData)
     }catch(err){
@@ -82,7 +81,7 @@ function* updateDuedate(action){
 
 function* userregister(action){
     try{
-        const data = yield call(register())
+        const data = yield call(register(action.data.user, action.data.email, action.data.password))
         yield put(registerUser)
     }catch(err){
         console.log(err)
@@ -91,7 +90,7 @@ function* userregister(action){
 
 function* userlogin(action){
     try{
-        const data = yield call(login())
+        const data = yield call(login(action.data.username, action.data.password))
         yield put(loginUser)
     }catch(err){
         console.log(err)

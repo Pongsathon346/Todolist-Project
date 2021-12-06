@@ -15,5 +15,5 @@ export const updateDue = data => ({ type: UPDATE_DUEDATE, data })
 export const REGISTER_USER = 'REGISTER_USER'
 export const LOGIN_USER = 'LOGIN_USER'
 
-export const registerUser = data => ({ type: REGISTER_USER, data })
-export const loginUser = data => ({ type: LOGIN_USER, data })
+export const registerUser = (user,email,password) => ({ type: REGISTER_USER, data:{user,email,password} })
+export const loginUser = (username,password) => ({ type: LOGIN_USER, data:{username,password} })

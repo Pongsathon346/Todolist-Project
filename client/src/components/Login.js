@@ -1,23 +1,17 @@
-import { useState, useEffect} from 'react'
-import axios from 'axios'
+import { useState, } from 'react'
 import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { loginUser } from '../redux/actions'
 
 const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
-    
+    const dispatch = useDispatch()
     function sendLogin() {
-        axios.post('http://localhost:5000/auth/users/login',{},{
-            auth:{
-                username: username,
-                password: password
-            }
-        }).then((res) => {
-            localStorage.setItem('user', JSON.stringify(res.data))
-            navigate('/projects')
-        })
+        dispatch(loginUser(username,password))
+        navigate('/projects')
     }
     
     return(

@@ -1,22 +1,32 @@
 import axios from "axios";
 
-export const register = async (username,password,email) => {
+export const register = async (user,email,password) => {
     try{
+        console.log('user',user)
+        console.log('email',email)
+        console.log('password',password)
         axios.post(`http://localhost:5000/auth/users/reg`,{
-            username:username,
+            username:user,
             password:password,
             email:email
         }).then((response)=>{
-            console.log(response);
+            console.log('response',response);
         })
     }catch(err){
         console.log(err);
     }
 }
 
-export const login = async () => {
+export const login = async (username,password) => {
     try{
-        //login axios
+        axios.post('http://localhost:5000/auth/users/login',{},{
+            auth:{
+                username: username,
+                password: password
+            }
+        }).then((res) => {
+            localStorage.setItem('user', JSON.stringify(res.data))
+        })
     }catch(err){
         console.log(err);
     }

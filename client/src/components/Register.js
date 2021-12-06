@@ -1,29 +1,29 @@
-import {useState, useEffect} from 'react' 
-import axios from 'axios'
+import {useState} from 'react' 
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router'
+
+import { registerUser } from '../redux/actions'
+
+import { useDispatch } from 'react-redux'
 
 const Register = () => {
     const [username, setUsername] = useState('')
     const [email,setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordCon, setPasswordCon] = useState('')
+
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     function sendReg(){
         if(password !== passwordCon){
             alert('Password did not match!')
         }else{
-            axios.post('http://localhost:5000/auth/users/reg',{
-                username: username,
-                email: email,
-                password: password
-            }).then((res) => {
-                alert(res.data.message)
-                navigate('/login')
-            })
+            const response = dispatch(registerUser(username,email,password))
+            console.log(response);
+            alert('Register Success!')
+            navigate('/login')
         }
-
     }
 
     return(
