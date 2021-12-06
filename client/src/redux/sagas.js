@@ -1,12 +1,6 @@
 import { call, put, takeEvery, takeLastest } from 'redux-saga/effects'
 
 import { 
-    SHOW_PROJECT_DATA, 
-    showProjectData, 
-    deleteProjectData,
-    DELETE_PROJECT_DATA,
-    addProjectData,
-    ADD_PROJECT_DATA,
     SHOW_LIST_DATA,
     showListData,
     ADD_LIST_DATA,
