@@ -2,15 +2,13 @@ import axios from "axios";
 
 export const register = async (user,email,password) => {
     try{
-        console.log('user',user)
-        console.log('email',email)
-        console.log('password',password)
-        axios.post(`http://localhost:5000/auth/users/reg`,{
+        await axios.post(`http://localhost:5000/auth/users/reg`,{
             username:user,
             password:password,
             email:email
         }).then((response)=>{
-            return response.status
+            console.log(response);
+            return response
         })
     }catch(err){
         console.log(err);
