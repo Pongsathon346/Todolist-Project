@@ -6,79 +6,45 @@ const List = () => {
 
     return(
         <>
-            <div className="flex flex-col">
-                <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                        <table className="min-w-full divide-y divide-gray-200">
-                        <thead className="bg-gray-50">
-                            <tr>
-                            <th
-                                scope="col"
-                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                            >
-                                Name
-                            </th>
-                            <th
-                                scope="col"
-                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                            >
-                                Title
-                            </th>
-                            <th
-                                scope="col"
-                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                            >
-                                Status
-                            </th>
-                            <th
-                                scope="col"
-                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                            >
-                                Role
-                            </th>
-                            <th scope="col" className="relative px-6 py-3">
-                                <span className="sr-only">Edit</span>
-                            </th>
-                            </tr>
-                        </thead>
-                        <tbody className="bg-white divide-y divide-gray-200">
-                            {lists.map((lists) => (
-                            <tr key={lists.email}>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                <div className="flex items-center">
-                                    <div className="flex-shrink-0 h-10 w-10">
-                                    <img className="h-10 w-10 rounded-full" src={lists.image} alt="" />
-                                    </div>
-                                    <div className="ml-4">
-                                    <div className="text-sm font-medium text-gray-900">{lists.name}</div>
-                                    <div className="text-sm text-gray-500">{lists.email}</div>
-                                    </div>
-                                </div>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                <div className="text-sm text-gray-900">{lists.title}</div>
-                                <div className="text-sm text-gray-500">{lists.department}</div>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                    Active
-                                </span>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{lists.role}</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                                    Edit
-                                </a>
-                                </td>
-                            </tr>
-                            ))}
-                        </tbody>
-                        </table>
-                    </div>
+            <div className=" text-5xl flex flex-row justify-center my-10 font-semibold text">WORKS TO BE DONE</div>
+            <div className="my-5 flex flex-row justify-center">
+                <input type="text" class=" mx-3 w-3/4 -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Enter name of event ex. wash a car" />
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
+                Add Work
+                </button>
+            </div>
+            <div className="">
+                <div className="flex flex-row justify-center text-center ">
+                    <div className="my-5 flex flex-row justify-between w-3/4 rounded-2xl bg-gray-100 py-7 px-10 shadow-xl">
+                        <div className="font-400 text-lg ">
+                            Wash a car
+                        </div>
+                        <div className="flex flex-row justify-between">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mx-5 text-green-700" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mx-5 text-red-700" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
+                <div className="flex flex-row justify-center text-center ">
+                    <div className="flex flex-row justify-between w-3/4 rounded-2xl bg-gray-100 py-7 px-10 shadow-xl">
+                        <div className="font-400 text-lg ">
+                            Wash a car
+                        </div>
+                        <div className="flex flex-row justify-between">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mx-5 text-green-700" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mx-5 text-red-700" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
                 </div>
+            </div>
         </>
     )
 }

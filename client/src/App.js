@@ -7,22 +7,21 @@ import { BrowserRouter,Route,Routes } from "react-router-dom";
 
 import Navbar from './layout/Navbar';
 
-import Login from './components/Login'
-import Register from './components/Register'
-import List from './components/List'
-import Welcome from './components/Welcome';
+import Loginpage from './pages/Loginpage'
+import Registerpage from './pages/Registerpage'
+import Todolist from './pages/Todolist'
+import Welcomepage from './pages/Welcomepage';
 
 export default () => {
   return (
     <>
       <Provider store={store}>
         <BrowserRouter>
-          <Navbar/>
           <Routes>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/register" element={<Register/>}/>
-            <Route path="/lists" element={<List/>}/>
-            <Route path="/" element={<Welcome/>}/>
+            <Route path="/login" element={<Loginpage/>}/>
+            <Route path="/register" element={<Registerpage/>}/>
+            <Route path="/lists" element={<Todolist/>}/>
+            <Route path="/" element={<Welcomepage/>}/>
           </Routes>
         </BrowserRouter>
       </Provider>
