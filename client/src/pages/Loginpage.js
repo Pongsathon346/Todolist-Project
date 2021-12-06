@@ -1,8 +1,13 @@
 import Login from '../components/Login'
-
+import Navbar from '../layout/Navbar'
 
 const Loginpage = () => {
-    <Login />
+    return(
+        <>
+            <Navbar />
+            <Login />
+        </>
+    )
 }
 
 export default Loginpage

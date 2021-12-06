@@ -4,19 +4,12 @@ import {
     SHOW_LIST_DATA,
     showListData,
     ADD_LIST_DATA,
-    addListData,
     DELETE_LIST_DATA,
-    deleteListData,
-    updateDesc,
     UPDATE_DESCRIPTION,
-    updateDue,
     UPDATE_DUEDATE,
-    updateStat,
     UPDATE_STATUS,
     LOGIN_USER,
-    loginUser,
     REGISTER_USER,
-    registerUser
 } from './actions'
 
 //lists
@@ -27,8 +20,8 @@ import { login, register } from './apis/user'
 
 function* showList(action){
     try{
-        const data = yield call(showTodolist())
-        yield put(showListData)
+        const data = yield call(showTodolist, action.data.user_id)
+        yield put(showListData(data))
     }catch(err){
         console.log(err)
     }
@@ -36,8 +29,7 @@ function* showList(action){
 
 function* addList(action){
     try{
-        const data = yield call(addTodolist())
-        yield put(addListData)
+        yield call(addTodolist, action.data.description, action.data.status, action.data.user_id)
     }catch(err){
         console.log(err)
     }
@@ -45,8 +37,7 @@ function* addList(action){
 
 function* deleteList(action){
     try{
-        const data = yield call(deleteTodolist())
-        yield put(deleteListData)
+        yield call(deleteTodolist, action.data.id)
     }catch(err){
         console.log(err)
     }
@@ -54,8 +45,7 @@ function* deleteList(action){
 
 function* updateDescrip(action){
     try{
-        const data = yield call(updateDescription())
-        yield put(updateDesc)
+        yield call(updateDescription())
     }catch(err){
         console.log(err)
     }
@@ -63,8 +53,7 @@ function* updateDescrip(action){
 
 function* updatestatus(action){
     try{
-        const data = yield call(updateStatus())
-        yield put(updateStat)
+        yield call(updateStatus())
     }catch(err){
         console.log(err)
     }
@@ -72,8 +61,7 @@ function* updatestatus(action){
 
 function* updateDuedate(action){
     try{
-        const data = yield call(updateDueDate())
-        yield put(updateDue)
+        yield call(updateDueDate())
     }catch(err){
         console.log(err)
     }
@@ -81,8 +69,7 @@ function* updateDuedate(action){
 
 function* userregister(action){
     try{
-        const data = yield call(register, action.data.user, action.data.email, action.data.password)
-        console.log('data',data);
+        yield call(register, action.data.user, action.data.email, action.data.password)
     }catch(err){
         console.log(err)
     }

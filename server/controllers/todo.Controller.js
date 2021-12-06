@@ -1,8 +1,8 @@
 const db = require('../config/database')
 
 exports.show = (req,res) => {
-    let id = req.params.projectid
-    const sql = 'SELECT * FROM todo_lists WHERE project_id = $1'
+    let id = req.params.user_id
+    const sql = 'SELECT * FROM todo_lists WHERE user_id = $1'
     db.query(sql,[id],(err,results) => {
         if(err){
             throw err
@@ -12,12 +12,11 @@ exports.show = (req,res) => {
 }
 
 exports.add = (req,res) => {
-    let start_date = req.body.start_date
     let description = req.body.description
     let status = req.body.status
-    let due_date = req.body.due_date
-    const sql = 'INSERT INTO todo_lists (todo_describ,todo_start,todo_end,todo_status) VALUES ($1,$2,$3,$4)'
-    db.query(sql,[description,start_date,due_date,status],(err,results) => {
+    let user_id = req.body.user_id
+    const sql = 'INSERT INTO todo_lists (todo_describ,todo_status,user_id) VALUES ($1,$2,$3)'
+    db.query(sql,[description,status,user_id],(err,results) => {
         if(err){
             throw err
         }

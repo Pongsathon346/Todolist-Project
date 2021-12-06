@@ -1,8 +1,12 @@
 import Register from "../components/Register"
+import Navbar from "../layout/Navbar"
 
 const Registerpage = () => {
     return(
-        <Register />
+        <>
+            <Navbar />
+            <Register />
+        </>
     )
 }
 

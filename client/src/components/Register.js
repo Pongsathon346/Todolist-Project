@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux'
 
 const Register = () => {
     const [username, setUsername] = useState('')
-    const [email,setEmail] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordCon, setPasswordCon] = useState('')
 
