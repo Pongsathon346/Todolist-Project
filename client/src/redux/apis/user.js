@@ -10,7 +10,7 @@ export const register = async (user,email,password) => {
             password:password,
             email:email
         }).then((response)=>{
-            console.log('response',response);
+            return response.status
         })
     }catch(err){
         console.log(err);

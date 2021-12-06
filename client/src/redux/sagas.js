@@ -13,10 +13,6 @@ import {
     UPDATE_DUEDATE,
     updateStat,
     UPDATE_STATUS,
-    REGISTER_USER,
-    registerUser,
-    LOGIN_USER,
-    loginUser 
 } from './actions'
 
 //lists
@@ -81,8 +77,7 @@ function* updateDuedate(action){
 
 function* userregister(action){
     try{
-        const data = yield call(register(action.data.user, action.data.email, action.data.password))
-        yield put(registerUser)
+        yield call(register(action.data.user, action.data.email, action.data.password))
     }catch(err){
         console.log(err)
     }
@@ -90,8 +85,7 @@ function* userregister(action){
 
 function* userlogin(action){
     try{
-        const data = yield call(login(action.data.username, action.data.password))
-        yield put(loginUser)
+        yield call(login(action.data.username, action.data.password))
     }catch(err){
         console.log(err)
     }
@@ -104,6 +98,4 @@ export default function* mySaga(){
     yield takeEvery(UPDATE_STATUS, updatestatus)
     yield takeEvery(UPDATE_DESCRIPTION, updateDescrip)
     yield takeEvery(UPDATE_DUEDATE, updateDuedate)
-    yield takeEvery(REGISTER_USER, userregister)
-    yield takeEvery(LOGIN_USER, userlogin)
 }

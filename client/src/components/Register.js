@@ -19,8 +19,7 @@ const Register = () => {
         if(password !== passwordCon){
             alert('Password did not match!')
         }else{
-            const response = dispatch(registerUser(username,email,password))
-            console.log(response);
+            dispatch(registerUser(username,email,password))
             alert('Register Success!')
             navigate('/login')
         }
