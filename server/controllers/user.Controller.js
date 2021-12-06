@@ -45,5 +45,4 @@ exports.login = function(req, res) {
         const token = jwt.sign({username, id}, 'userToken');
         return res.status(200).json({id, username, token})
     }
-    
 }
