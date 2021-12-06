@@ -7,7 +7,7 @@ export const UPDATE_DUEDATE = 'UPDATE_DUEDATE'
 
 export const showListData = data => ({ type: SHOW_LIST_DATA, data })
 export const addListData = data => ({ type: ADD_LIST_DATA, data })
-export const deleteListData = data => ({ type: DELETE_PROJECT_DATA, data })
+export const deleteListData = data => ({ type: DELETE_LIST_DATA, data })
 export const updateDesc = data => ({ type: UPDATE_DESCRIPTION, data })
 export const updateStat = data => ({ type: UPDATE_STATUS, data })
 export const updateDue = data => ({ type: UPDATE_DUEDATE, data })

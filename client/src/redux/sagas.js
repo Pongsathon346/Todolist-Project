@@ -1,4 +1,4 @@
-import { call, put, takeEvery, takeLastest } from 'redux-saga/effects'
+import { call, put, takeEvery } from 'redux-saga/effects'
 
 import { 
     SHOW_LIST_DATA,
@@ -20,13 +20,14 @@ import {
 } from './actions'
 
 //lists
-import { showTodolist, addTodolist, deleteTodolist, updateDescription, updateStatus, updateDueDate} from './apis/todolist'
+import { showTodolist, addTodolist, deleteTodolist, updateDescription, updateStatus, updateDueDate } from './apis/todolist'
 
 //users
 import { login, register } from './apis/user'
 
 function* showList(action){
     try{
+        console.log(action);
         const data = yield call(showTodolist())
         yield put(showListData)
     }catch(err){
@@ -98,12 +99,12 @@ function* userlogin(action){
 }
 
 export default function* mySaga(){
-    yield takeLastest(SHOW_LIST_DATA, showList)
-    yield takeLastest(ADD_LIST_DATA, addList)
-    yield takeLastest(DELETE_LIST_DATA, deleteList)
-    yield takeLastest(UPDATE_STATUS, updatestatus)
-    yield takeLastest(UPDATE_DESCRIPTION, updateDescrip)
-    yield takeLastest(UPDATE_DUEDATE, updateDuedate)
-    yield takeLastest(REGISTER_USER, userregister)
-    yield takeLastest(LOGIN_USER, userlogin)
+    yield takeEvery(SHOW_LIST_DATA, showList)
+    yield takeEvery(ADD_LIST_DATA, addList)
+    yield takeEvery(DELETE_LIST_DATA, deleteList)
+    yield takeEvery(UPDATE_STATUS, updatestatus)
+    yield takeEvery(UPDATE_DESCRIPTION, updateDescrip)
+    yield takeEvery(UPDATE_DUEDATE, updateDuedate)
+    yield takeEvery(REGISTER_USER, userregister)
+    yield takeEvery(LOGIN_USER, userlogin)
 }
