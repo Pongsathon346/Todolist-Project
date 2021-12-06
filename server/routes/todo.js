@@ -1,7 +1,7 @@
 const route = require('express').Router()
 const todoController = require('../controllers/todo.Controller')
 
-route.get('/show/:projectid', todoController.show)
+route.get('/show/:id', todoController.show)
 
 route.post('/add', todoController.add)
 

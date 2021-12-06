@@ -8,14 +8,17 @@ const List = () => {
 
     const [input,setInput] = useState('')
 
-    const local = localStorage.getItem('user')
+    const local = JSON.parse(localStorage.getItem('user'))
     const user_id = local.id
 
-    const lists = useSelector((state) => state.todolist)
-
-    useEffect(() => {
-        dispatch(showListData(user_id))
+    useEffect(()=>{
+        if(user_id!==undefined){
+            dispatch(showListData(user_id))
+        } 
     },[])
+    
+
+    const lists = useSelector((state) => state.todolist)
 
     const addList = () => {
         dispatch(addListData(input,'Plan',user_id))
@@ -26,6 +29,8 @@ const List = () => {
         dispatch(deleteListData(id))
         dispatch(showListData(user_id))
     }
+
+    console.log(lists);
 
     return(
         <>
@@ -38,12 +43,12 @@ const List = () => {
             </div>
             <div className="">
 
-                {lists.length>0 ? (
-                    lists.map((list) => (
+                { 
+                    lists.data.data.rows.map((list) => (
                         <div className="flex flex-row justify-center text-center ">
                             <div className="my-5 flex flex-row justify-between w-3/4 rounded-2xl bg-gray-100 py-7 px-10 shadow-xl">
                                 <div className="font-400 text-lg ">
-                                    {list.description}
+                                    {list.todo_describ}
                                 </div>
                                 <div className="flex flex-row justify-between">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mx-5 text-green-700" viewBox="0 0 20 20" fill="currentColor">
@@ -57,11 +62,7 @@ const List = () => {
                         </div>
                         )
                     )
-                    ):(
-                    <>
-                        Create A List
-                    </>
-                    )
+                    
                 }
                 <div className="flex flex-row justify-center text-center ">
                     <div className="my-5 flex flex-row justify-between w-3/4 rounded-2xl bg-gray-100 py-7 px-10 shadow-xl">

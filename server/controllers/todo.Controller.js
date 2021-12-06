@@ -1,13 +1,13 @@
 const db = require('../config/database')
 
 exports.show = (req,res) => {
-    let id = req.params.user_id
+    let id = req.params.id
     const sql = 'SELECT * FROM todo_lists WHERE user_id = $1'
     db.query(sql,[id],(err,results) => {
         if(err){
             throw err
         }
-        return res.status(200).json({data:results.rowCount})
+        return res.status(200).json({data:results})
     })
 }
 

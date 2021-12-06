@@ -10,6 +10,7 @@ import {
     UPDATE_STATUS,
     LOGIN_USER,
     REGISTER_USER,
+    insertListData,
 } from './actions'
 
 //lists
@@ -21,7 +22,8 @@ import { login, register } from './apis/user'
 function* showList(action){
     try{
         const data = yield call(showTodolist, action.data.user_id)
-        yield put(showListData(data))
+        console.log(data);
+        yield put(insertListData(data))
     }catch(err){
         console.log(err)
     }
