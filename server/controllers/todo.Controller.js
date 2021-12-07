@@ -52,7 +52,7 @@ exports.updatedescription = (req,res) => {
 }
 
 exports.updatestatus = (req,res) => {
-    let status = 'Done'
+    let status = req.body.status
     let id = req.body.id
     const sql = 'UPDATE todo_lists SET todo_status = $1 WHERE todo_id = $2'
     db.query(sql,[status,id],(err,results) => {

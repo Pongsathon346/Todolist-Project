@@ -35,10 +35,11 @@ export const updateDescription = async (description,id) => {
     }
 }
 
-export const updateStatus = async (id) => {
+export const updateStatus = async (id,status) => {
     try{
         axios.put(`http://localhost:5000/auth/lists/updatestatus`,{
-            id:id
+            id:id,
+            status:status
         }).then((response)=>{
             console.log(response)
         })

@@ -52,7 +52,18 @@ const List = () => {
 
     const done = async (id) => {
         try{
-            dispatch(updateStat(id))
+            dispatch(updateStat(id,'Done'))
+            setTimeout(()=>{
+                setCount(count+1)
+            },100)
+        }catch(e){
+            throw e
+        }
+    }
+
+    const undo = async (id) => {
+        try{
+            dispatch(updateStat(id,'Plan'))
             setTimeout(()=>{
                 setCount(count+1)
             },100)
@@ -93,7 +104,7 @@ const List = () => {
                                     </div>
                                     </s>
                                     <div className="flex flex-row justify-between">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 mx-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg onClick={()=> undo(list.todo_id)} xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 mx-5 text-black-700 hover:bg-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
                                         </svg>
                                         <svg onClick={()=> onDelete(list.todo_id)} xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mx-5 text-red-700 hover:bg-gray-200" viewBox="0 0 20 20" fill="currentColor">
