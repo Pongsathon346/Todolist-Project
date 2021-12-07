@@ -28,21 +28,37 @@ const List = () => {
         }
     },[lists,count])
 
-    useEffect(()=>{
-        setCount(count+1)
-    },[lists])
-
-    const addList = () => {
-        dispatch(addListData(input,'Plan',userid))
+    const addList = async () => {
+        try{
+            dispatch(addListData(input,'Plan',userid))
+            setTimeout(()=>{
+                setCount(count+1)   
+            }, 100)
+        }catch(e){
+            throw e
+        }
     }
 
-    const onDelete = (id) => {
-        dispatch(deleteListData(id))
+    const onDelete = async (id) => {
+        try{
+            dispatch(deleteListData(id))
+            setTimeout(()=>{
+                setCount(count+1)
+            },100)
+        }catch(e){
+            throw e
+        }
     }
 
-    const done = (id) => {
-        dispatch(updateStat(id))
-        setCount(count+1)
+    const done = async (id) => {
+        try{
+            dispatch(updateStat(id))
+            setTimeout(()=>{
+                setCount(count+1)
+            },100)
+        }catch(e){
+            throw e
+        }
     }
 
     return(
