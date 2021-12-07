@@ -9,7 +9,7 @@ export const showListData = (user_id) => ({ type: SHOW_LIST_DATA, data:{user_id}
 export const addListData = (description, status, user_id) => ({ type: ADD_LIST_DATA, data:{description,status,user_id} })
 export const deleteListData = (id) => ({ type: DELETE_LIST_DATA, data:{id} })
 export const updateDesc = data => ({ type: UPDATE_DESCRIPTION, data })
-export const updateStat = data => ({ type: UPDATE_STATUS, data })
+export const updateStat = (id) => ({ type: UPDATE_STATUS, data:{id} })
 export const insertListData = data => ({ type: INSERT_LIST_DATA, data })
 
 export const REGISTER_USER = 'REGISTER_USER'

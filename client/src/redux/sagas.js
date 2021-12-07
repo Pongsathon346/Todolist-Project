@@ -53,7 +53,7 @@ function* updateDescrip(action){
 
 function* updatestatus(action){
     try{
-        yield call(updateStatus())
+        yield call(updateStatus,action.data.id)
     }catch(err){
         console.log(err)
     }

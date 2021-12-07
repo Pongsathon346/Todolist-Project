@@ -3,7 +3,7 @@ const db = require('../config/database')
 exports.show = (req,res) => {
     let id = req.params.id
     if(id!==undefined){
-        const sql = 'SELECT * FROM todo_lists WHERE user_id = $1'
+        const sql = 'SELECT * FROM todo_lists WHERE user_id = $1 ORDER BY todo_id DESC'
         db.query(sql,[id],(err,results) => {
             if(err){
                 throw err
@@ -52,9 +52,9 @@ exports.updatedescription = (req,res) => {
 }
 
 exports.updatestatus = (req,res) => {
-    let status = req.body.status
+    let status = 'Done'
     let id = req.body.id
-    const sql = 'UPDATE todo_lists SET todo_status VALUES $1 WHERE todo_id = $2'
+    const sql = 'UPDATE todo_lists SET todo_status = $1 WHERE todo_id = $2'
     db.query(sql,[status,id],(err,results) => {
         if(err){
             throw err
