@@ -2,13 +2,15 @@ const db = require('../config/database')
 
 exports.show = (req,res) => {
     let id = req.params.id
-    const sql = 'SELECT * FROM todo_lists WHERE user_id = $1'
-    db.query(sql,[id],(err,results) => {
-        if(err){
-            throw err
-        }
-        return res.status(200).json({data:results})
-    })
+    if(id!==undefined){
+        const sql = 'SELECT * FROM todo_lists WHERE user_id = $1'
+        db.query(sql,[id],(err,results) => {
+            if(err){
+                throw err
+            }
+            return res.status(200).json({data:results})
+        })
+    }
 }
 
 exports.add = (req,res) => {
@@ -26,13 +28,15 @@ exports.add = (req,res) => {
 
 exports.delete = (req,res) => {
     let id = req.params.id
-    const sql = 'DELETE FROM todo_lists WHERE todo_id = $1'
-    db.query(sql,[id],(err,results) => {
-        if(err){
-            throw err
-        }
-        return res.status(200).json({data:results.rowCount})
-    })
+    if(id!==undefined){
+        const sql = 'DELETE FROM todo_lists WHERE todo_id = $1'
+        db.query(sql,[id],(err,results) => {
+            if(err){
+                throw err
+            }
+            return res.status(200).json({data:results.rowCount})
+        })
+    }
 }
 
 exports.updatedescription = (req,res) => {

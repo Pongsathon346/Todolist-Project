@@ -6,7 +6,6 @@ import {
     ADD_LIST_DATA,
     DELETE_LIST_DATA,
     UPDATE_DESCRIPTION,
-    UPDATE_DUEDATE,
     UPDATE_STATUS,
     LOGIN_USER,
     REGISTER_USER,
@@ -14,7 +13,7 @@ import {
 } from './actions'
 
 //lists
-import { showTodolist, addTodolist, deleteTodolist, updateDescription, updateStatus, updateDueDate } from './apis/todolist'
+import { showTodolist, addTodolist, deleteTodolist, updateDescription, updateStatus } from './apis/todolist'
 
 //users
 import { login, register } from './apis/user'
@@ -22,7 +21,6 @@ import { login, register } from './apis/user'
 function* showList(action){
     try{
         const data = yield call(showTodolist, action.data.user_id)
-        console.log(data);
         yield put(insertListData(data))
     }catch(err){
         console.log(err)
@@ -61,14 +59,6 @@ function* updatestatus(action){
     }
 }
 
-function* updateDuedate(action){
-    try{
-        yield call(updateDueDate())
-    }catch(err){
-        console.log(err)
-    }
-}
-
 function* userregister(action){
     try{
         yield call(register, action.data.user, action.data.email, action.data.password)
@@ -91,7 +81,6 @@ export default function* mySaga(){
     yield takeEvery(DELETE_LIST_DATA, deleteList)
     yield takeEvery(UPDATE_STATUS, updatestatus)
     yield takeEvery(UPDATE_DESCRIPTION, updateDescrip)
-    yield takeEvery(UPDATE_DUEDATE, updateDuedate)
     yield takeEvery(REGISTER_USER, userregister)
     yield takeEvery(LOGIN_USER, userlogin)
 }

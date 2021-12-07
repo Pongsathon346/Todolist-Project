@@ -10,7 +10,7 @@ export const showTodolist = async (user_id) => {
 
 export const addTodolist = async ( description, status, user_id) => {
     try{
-        axios.post(`http://localhost:5000/auth/lists/add`,{
+        await axios.post(`http://localhost:5000/auth/lists/add`,{
             description: description,
             status: status,
             user_id: user_id
@@ -27,6 +27,8 @@ export const updateDescription = async (description,id) => {
         axios.post(`http://localhost:5000/auth/lists/updatedescription`,{
             description:description,
             id:id
+        }).then((response)=>{
+            console.log(response);
         })
     }catch(err){
         console.log(err);
@@ -38,17 +40,8 @@ export const updateStatus = async (status,id) => {
         axios.post(`http://localhost:5000/auth/lists/updatestatus`,{
             status:status,
             id:id
-        })
-    }catch(err){
-        console.log(err);
-    }
-}
-
-export const updateDueDate = async (due_date,id) => {
-    try{
-        axios.post(`http://localhost:5000/auth/lists/updateduedate`,{
-            due_date:due_date,
-            id:id
+        }).then((response)=>{
+            console.log(response)
         })
     }catch(err){
         console.log(err);
@@ -57,7 +50,9 @@ export const updateDueDate = async (due_date,id) => {
 
 export const deleteTodolist = async (id) => {
     try{
-        axios.delete(`http://localhost:5000/auth/lists/delete/${id}`)
+        await axios.delete(`http://localhost:5000/auth/lists/delete/${id}`).then((response)=>{
+            console.log(response);
+        })
     }catch(err){
         console.log(err);
     }

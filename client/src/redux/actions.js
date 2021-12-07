@@ -3,7 +3,6 @@ export const ADD_LIST_DATA = 'ADD_LIST_DATA'
 export const DELETE_LIST_DATA = 'DELETE_LIST_DATA'
 export const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION'
 export const UPDATE_STATUS = 'UPDATE_STATUS'
-export const UPDATE_DUEDATE = 'UPDATE_DUEDATE'
 export const INSERT_LIST_DATA = 'INSERT_LIST_DATA'
 
 export const showListData = (user_id) => ({ type: SHOW_LIST_DATA, data:{user_id} })
@@ -11,7 +10,6 @@ export const addListData = (description, status, user_id) => ({ type: ADD_LIST_D
 export const deleteListData = (id) => ({ type: DELETE_LIST_DATA, data:{id} })
 export const updateDesc = data => ({ type: UPDATE_DESCRIPTION, data })
 export const updateStat = data => ({ type: UPDATE_STATUS, data })
-export const updateDue = data => ({ type: UPDATE_DUEDATE, data })
 export const insertListData = data => ({ type: INSERT_LIST_DATA, data })
 
 export const REGISTER_USER = 'REGISTER_USER'
