@@ -56,3 +56,15 @@ export const deleteTodolist = async (id) => {
         console.log(err);
     }
 }
+
+export const undoStat = async (id) => {
+    try{
+        axios.put(`http://localhost:5000/auth/lists/undostatus`,{
+            id:id
+        }).then((response)=>{
+            console.log(response)
+        })
+    }catch(err){
+        console.log(err);
+    }
+}

@@ -10,10 +10,11 @@ import {
     LOGIN_USER,
     REGISTER_USER,
     insertListData,
+    UNDO_STATUS,
 } from './actions'
 
 //lists
-import { showTodolist, addTodolist, deleteTodolist, updateDescription, updateStatus } from './apis/todolist'
+import { showTodolist, addTodolist, deleteTodolist, updateDescription, updateStatus, undoStat } from './apis/todolist'
 
 //users
 import { login, register } from './apis/user'
@@ -59,6 +60,14 @@ function* updatestatus(action){
     }
 }
 
+function* undostatus(action){
+    try{
+        yield call(undoStat,action.data.id)
+    }catch(err){
+        console.log(err);
+    }
+}
+
 function* userregister(action){
     try{
         yield call(register, action.data.user, action.data.email, action.data.password)
@@ -83,4 +92,5 @@ export default function* mySaga(){
     yield takeEvery(UPDATE_DESCRIPTION, updateDescrip)
     yield takeEvery(REGISTER_USER, userregister)
     yield takeEvery(LOGIN_USER, userlogin)
+    yield takeEvery(UNDO_STATUS, undostatus)
 }

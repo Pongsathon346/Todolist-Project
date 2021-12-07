@@ -60,15 +60,14 @@ exports.updatestatus = (req,res) => {
             throw err
         }
         return res.status(200).json({data:results.rowCount})
-        
     })
 }
 
-exports.updateduedate = (req,res) => {
-    let duedate = req.body.due_date
+exports.undostatus = (req,res) => {
+    let status = 'Plan'
     let id = req.body.id
-    const sql = 'UPDATE todo_lists SET todo_end = $1 WHERE todo_id = $2'
-    db.query(sql,[duedate,id],(err,results) => {
+    const sql = 'UPDATE todo_lists SET todo_status = $1 WHERE todo_id = $2'
+    db.query(sql,[status,id],(err,results) => {
         if(err){
             throw err
         }
