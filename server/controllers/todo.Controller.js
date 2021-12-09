@@ -4,7 +4,7 @@ exports.show = async (req,res) => {
     const id = req.params.id
     try{
         let value = await Todolist.where({ 'user_id' : id }).fetchAll({require:true})
-        return res.status(200).send({value})
+        return res.status(200).send(value)
     }catch(e){
         return res.status(400).send(e)
     }
@@ -18,31 +18,30 @@ exports.add = async (req,res) => {
             todo_status: status,
             user_id: user_id
         }).save()
-        return res.status(200).send({value})
+        return res.status(200).send(value)
     }catch(e){
         return res.status(400).send(e)
     }
 }
 
 exports.delete = async (req,res) => {
-    const id = req.params.id
+    const { id } = req.params
     try{
         let value = await Todolist.where('todo_id',id).destroy()
-        return res.status(200).send({value})
+        return res.status(200).send(value)
     }catch(e){
         return res.status(400).send(e)
-    }
+    };
 }
 
 exports.updatestatus = async (req,res) => {
     const { status, id } = req.body
-    const sql = 'UPDATE todo_lists SET todo_status = $1 WHERE todo_id = $2'
     try{
         let value = await Todolist.where('todo_id',id).save(
             { todo_status:status },
             { patch: true }
         )
-        res.status(200).send({value})
+        res.status(200).send(value)
     }catch(e){
         return res.status(400).send(e)
     }

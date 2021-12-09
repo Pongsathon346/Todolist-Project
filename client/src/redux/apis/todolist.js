@@ -10,6 +10,7 @@ export const showTodolist = async (user_id) => {
 
 export const addTodolist = async ( description, status, user_id) => {
     try{
+        console.log('adding');
         await axios.post(`http://localhost:5000/auth/lists/add`,{
             description: description,
             status: status,
