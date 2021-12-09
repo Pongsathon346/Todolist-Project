@@ -1,11 +1,15 @@
-const Pool = require('pg').Pool;
+const knex = require('knex')({
+    client:'pg',
+    connection: {
+        host:'localhost',
+        user:'admin',
+        password:'1q2w3e',
+        database:'todoproject',
+    },
+})
 
-const pool = new Pool({
-    user: 'admin',
-    password: '1q2w3e',
-    host: 'localhost',
-    port: 5432,
-    database: 'todoproject'
-});
+var DB = require('bookshelf')(knex)
 
-module.exports = pool;
+module.exports = {
+    DB,
+}

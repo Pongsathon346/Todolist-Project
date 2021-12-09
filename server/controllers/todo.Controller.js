@@ -1,76 +1,49 @@
-const db = require('../config/database')
+const { Todolist } = require('../models/todolist')
 
-exports.show = (req,res) => {
-    let id = req.params.id
-    if(id!==undefined){
-        const sql = 'SELECT * FROM todo_lists WHERE user_id = $1 ORDER BY todo_id DESC'
-        db.query(sql,[id],(err,results) => {
-            if(err){
-                throw err
-            }
-            return res.status(200).json({data:results})
-        })
+exports.show = async (req,res) => {
+    const id = req.params.id
+    try{
+        let value = await Todolist.where({ 'user_id' : id }).fetchAll({require:true})
+        return res.status(200).send({value})
+    }catch(e){
+        return res.status(400).send(e)
     }
 }
 
-exports.add = (req,res) => {
-    let description = req.body.description
-    let status = req.body.status
-    let user_id = req.body.user_id
-    const sql = 'INSERT INTO todo_lists (todo_describ,todo_status,user_id) VALUES ($1,$2,$3)'
-    db.query(sql,[description,status,user_id],(err,results) => {
-        if(err){
-            throw err
-        }
-        return res.status(200).json({data:results.rowCount})
-    })
-}
-
-exports.delete = (req,res) => {
-    let id = req.params.id
-    if(id!==undefined){
-        const sql = 'DELETE FROM todo_lists WHERE todo_id = $1'
-        db.query(sql,[id],(err,results) => {
-            if(err){
-                throw err
-            }
-            return res.status(200).json({data:results.rowCount})
-        })
+exports.add = async (req,res) => {
+    const { description, status, user_id } = req.body
+    try{
+        let value = await Todolist.forge({
+            todo_describ: description,
+            todo_status: status,
+            user_id: user_id
+        }).save()
+        return res.status(200).send({value})
+    }catch(e){
+        return res.status(400).send(e)
     }
 }
 
-exports.updatedescription = (req,res) => {
-    let description = req.body.description
-    let id = req.body.id
-    const sql = 'UPDATE todo_lists SET todo_describ VALUES $1 WHERE todo_id = $2'
-    db.query(sql,[description,id],(err,results) => {
-        if(err){
-            throw err
-        }
-        return res.status(200).json({data:results.rowCount})
-    })
+exports.delete = async (req,res) => {
+    const id = req.params.id
+    try{
+        let value = await Todolist.where('todo_id',id).destroy()
+        return res.status(200).send({value})
+    }catch(e){
+        return res.status(400).send(e)
+    }
 }
 
-exports.updatestatus = (req,res) => {
-    let status = req.body.status
-    let id = req.body.id
+exports.updatestatus = async (req,res) => {
+    const { status, id } = req.body
     const sql = 'UPDATE todo_lists SET todo_status = $1 WHERE todo_id = $2'
-    db.query(sql,[status,id],(err,results) => {
-        if(err){
-            throw err
-        }
-        return res.status(200).json({data:results.rowCount})
-    })
-}
-
-exports.undostatus = (req,res) => {
-    let status = 'Plan'
-    let id = req.body.id
-    const sql = 'UPDATE todo_lists SET todo_status = $1 WHERE todo_id = $2'
-    db.query(sql,[status,id],(err,results) => {
-        if(err){
-            throw err
-        }
-        return res.status(200).json({data:results.rowCount})
-    })
+    try{
+        let value = await Todolist.where('todo_id',id).save(
+            { todo_status:status },
+            { patch: true }
+        )
+        res.status(200).send({value})
+    }catch(e){
+        return res.status(400).send(e)
+    }
 }
