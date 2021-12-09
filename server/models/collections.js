@@ -4,6 +4,11 @@ const Todolist = DB.Model.extend({
     tableName: 'todo_lists'
 })
 
+const User = DB.Model.extend({
+    tableName:'users'
+})
+
 module.exports = {
-    Todolist
+    Todolist,
+    User
 }

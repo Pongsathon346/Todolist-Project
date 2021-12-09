@@ -1,4 +1,4 @@
-const { Todolist } = require('../models/todolist')
+const { Todolist } = require('../models/collections')
 
 exports.show = async (req,res) => {
     const id = req.params.id
